@@ -1,2 +1,2 @@
 # sudoku-solver
-Algoritmo solucionador do jogo sudoku
+Algoritmos solucionadores do jogo sudoku. Trabalho acadêmico para a matéria de inteligência artificial da Fatec SP 
