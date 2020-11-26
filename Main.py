@@ -24,21 +24,24 @@ def soluciona(dicas):
             # Para cada grupo de variável (linhas, colunas e quadrados), adiciona a constraint
             # de todos differentes (allDifferent)
             problema.addConstraint(AllDifferentConstraint(), grupo_de_variavel)
-    return problema.getSolution()
+    return problema.getSolutions()
 
 
-def formata_grid(variavel_para_valor):
-    print(variavel_para_valor)
-    tabela = ''
-    for linhanum, linha in enumerate('abcdefghi'):
-        for colunanum, coluna in enumerate('123456789'):
-            tabela += str(variavel_para_valor[linha+coluna])
-            if colunanum % 3 == 2:
-                tabela += ' '
-        tabela += '\n'
-        if linhanum % 3 == 2:
+def formata_grid(conjunto_de_solucoes):
+    for variavel_para_valor in conjunto_de_solucoes:
+        tabela = ''
+        for linhanum, linha in enumerate('abcdefghi'):
+            for colunanum, coluna in enumerate('123456789'):
+                tabela += str(variavel_para_valor[linha+coluna])
+                if colunanum % 3 == 2:
+                    tabela += ' '
             tabela += '\n'
-    return tabela
+            if linhanum % 3 == 2:
+                tabela += '\n'
+        print(tabela)
+        print("--- --- ---")
+        input("Mais soluções? ")
+    return
 
 dicas = (
     0, 0, 8,  0, 0, 6,  0, 0, 0,
@@ -54,4 +57,4 @@ dicas = (
     0, 0, 0,  9, 0, 0,  7, 0, 0,
 )
 
-print(formata_grid(soluciona(dicas)))
+formata_grid(soluciona(dicas))
